@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--
+Designed & Developed by : chathura widanage <chathurawidanage@gmail.com>
+-->
+<html>
+    <head>
+        <title>Chathura Widanage</title>
+        <meta name="description" content="Integrated computer science and engineering undergraduate, Oracle Certified Professional">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/bootstrap.css">
+
+        <link rel="stylesheet" href="css/accordian.css">
+        <link rel="stylesheet" href="css/style.css">
+
+        <link rel="stylesheet" href="css/timeline/style.css">
+
+        <script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="js/parallax.min.js"></script>
+
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+        <script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid" id="top" data-parallax="scroll" data-image-src="img/where-tahrs-live.jpg">
+            <div class="row text-center title">
+                <img src="img/profile_pic.JPG" alt="profile picture" class="img-responsive prof_pic">
+                <h1>Chathura Widanage</h1>
+                <div class="container">
+                    <h5>
+                        I am an integrated computer science and engineering 
+                        undergraduate at university of Moratuwa. I love coding 
+                        since my childhood.I am curious about 
+                        the cutting edge technologies that are related to the 
+                        software engineering. Currently I am acting as a freelance 
+                        developer with the intention of widening my knowledge and experience.
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" id="menu_bar_position"></div>
+        <div class="container-fluid menu_bar" id="menu_bar">
+            <ul class="nav">
+                <li><a href="index.html#education">Education</a></li>
+                <li><a href="index.html#projects">Projects</a></li>                
+                <li><a href="index.html#achievements">Achievements</a></li>
+                <li><a href="index.html#experience">Experience</a></li>
+                <li><a href="cwidanage.pdf" target="_blank">Download CV</a></li>
+            </ul>
+        </div>
+        <div class="container content">
+            <div class="row heading text-center">
+                <h2>Multi model Self Driving autonomous car</h2>                
+            </div>
+            <div class="panel_mat">               
+                <div class="panel_mat_head" style="height: 450px">
+                    <img src="img/projects/car/FB_IMG_14354819547311804.jpg" alt="img" class="img-responsive center-block">  
+                    <!--<span>Moraspirit Sports Channel</span>-->
+                </div>
+                <div class="panel_tech">   
+                    <div class="tech tech-arduino"></div>
+                    <div class="tech tech-pi"></div>
+                    <div class="tech tech-node"></div>
+                    <div class="tech tech-opencv"></div>
+                    <div class="tech tech-java" title="java"></div>
+                </div>
+                <div class="panel_mat_line">
+
+                </div>
+                <div class="panel_mat_body">
+                    <p>
+                        Designed and developed a car that has the ability to 
+                        avoid the obstacles and travel on the road by detecting 
+                        the lanes. Lane detection comprises of  three 
+                        different algorithms that suite three different 
+                        road conditions.  
+                    </p>
+
+                    <p>
+                        The self driving car has three sub systems.
+                    </p>
+                    <ol>
+                        <li>lane detection</li>
+                        <li>Obstacles detection</li>
+                        <li>Motor Driving & Speed controlling system</li>
+                    </ol>
+
+                    <h4>Lane detection system</h4>
+                    <p>
+                        In this project my task was to develop lane detection 
+                        algorithms using openCV. Here I used javaCV, the java wrapper 
+                        for the opencv library. To make the process easier, first I developed a 
+                        java swing based interface, so that I can test the algorithms with different parameters easily.
+                        Though we had to demo this project 
+                        using a robot rower, inside a building, I developed three 
+                        algorithms to suite three different road conditions.
+                    </p>
+                    <p>
+                        First algorithms was developed to suite <b>high ways.</b>
+                    </p>
+                    <img src="img/projects/car/optimim.png" class="img-responsive" alt="high_ways">
+                    <p>
+                        First the image taken from the camera was scanned for edges 
+                        using Canny edge detection and then Hough transform was used 
+                        to find the lines that can be formed with a pre set minimum length.
+                        Then the lines were filed so that there angle(w.r.t origin) is 
+                        between 30 degrees and 150 degrees.
+                    </p>
+                    <p>
+                        The next step was to find the intersecting point of each line 
+                        with acute angle with each line with an obtuse angle of inclination.
+                        Those points were then averaged to get a point that roughly 
+                        agrees all the points. Let;s say this point as <b>A</b>
+                    </p>
+                    <p>
+                        The final step was to determine whether point <b>A</b>
+                        is deviated from the center(Center of the captured image). If the point is deviated to the left 
+                        from the center, then signal was sent to the driving sub system to 
+                        turn the vehicle to the right. Similarly if point <b>A</b>
+                        is deviated to the right from the center, then the signal was sent to 
+                        driving sub system to turn the vehicle left. Along with the 
+                        direction, a magnitude was also sent to control the speed of the
+                        vehicle and that parameter depends on the deviation.
+                    </p>
+                    <br>
+                    <p>The second algorithms was for <b>noisy roads</b></p>
+                    <p>After developing the first algorithm, when I tried to apply it 
+                        in a noisy road (A road where lines are not very much clear or
+                        a road where lots of vehicles are parked on either side.)
+                        it didn't work as I expected. The major problem was detecting 
+                        the shiny edges of the vehicles as the lines.
+                    </p>
+                    <p>
+                        As a solution for this, I completely altered the algorithm.
+                        First I applied gaussian blur filter to make the noises spread.
+                        Then the center of gravity(COG) of the noises were calculated with respect to
+                        the origin. 
+                    </p>
+                    <p>
+                        The next step was to determine the deviation of the COG from the center.
+                        If COG was in the left side that means there high noise in the left.
+                        That means road runs in the right side(road is lesser noisy). So vehicle should 
+                        turn to right. Similarly if COG was in the right side, the vehicle should turn left.
+                    </p>
+                    <p>
+                        <b>How ever this algorithms was not reliable as the previous one.</b>
+                        But this one was sufficient to detect the road inside our university.
+                    </p>
+                    <br>
+                    <p>The third algorithms was to detect <b>indoor purposely made roads.</b></p>
+                    <img src="img/projects/car/FB_IMG_14354819606497627.jpg" alt="indoor" class="img-responsive center-block">
+                    <p>
+                        Here there was no any of the problems that I had to solve in above two algorithms.
+                        The lanes were always detectable without any break.
+                    </p>
+                    <p>
+                        First noise of the image was reduced by applying 
+                        gaussian blur filter. Then image was converted to binary 
+                        by adjusting the threshold value such that it suits the 
+                        indoor lighting conditions. (such that it highlights lanes without noise).   
+                    </p>
+                    <p>
+                        Assuming car is centered in lanes initially, a scan was done from center to either sides of the 
+                        image till a high intesity pixel is detected. If high intensity
+                        pixels are detected in both sides that row of pixels are considered as accepted.(will consider for lane detection)
+                        Then the center of these two pixels are found and recorded. (stored in an array).
+                        Then for the next row(rows are iterating from top to bottom) previous center 
+                        was considered as the center.
+                    </p>
+                    <p>
+                        Finally curve fitting was done (Using Apache Math) with above points (centers)
+                        to determine the lane and direction.
+                    </p>
+                    <p>
+                        This algorithm was the most accurate and reliable one among the three algorithms
+                    </p>
+                    <br>
+                    <h4>Obstacle Detection System</h4>
+                    <img src="img/projects/car/FB_IMG_14354819656760191.jpg" class="img-responsive center-block">
+                    <p>
+
+                        For obstacle detection, we used an array of eight sonar sensors. These sonar sensors were
+                        continously scanned by an arduino mega and sent them to Driving sub system, which is powered by
+                        a rasberry Pi. Rasberry pi analyzes the values sent by the arduino to determine the
+                        presence of obstacles. (If shorter length is detected that can be a obstacle). 
+                        To reduce the noise and also to reduce to unreliability averaging techniques were also used
+                        for the sonar readings. If driving sub system determines some point as an obstacle,
+                        it completely neglect the data from the vision system and stops the vehicle immediately.
+                        (Or slows down depending on the severity).
+                    </p>
+                    <br>
+                    <h4>Driving sub system</h4>
+                    <p>As mentioned above driving system which is powered by a rasberry Pi, runs a node 
+                        server to accept the inputs and feedback from the vision sub system
+                        Depending on the feedback taken from vision sub system and 
+                        obstacle detecion system, this activates the motor controllers
+                        to drive the vehicle.
+                    </p>
+                    <br>
+                    <p>This is the best team project I have ever done here are the most awesome team players in the world :)</p>
+                    <img src="img/projects/car/FB_IMG_14353146237092569.jpg" class="img-responsive center-block" alt="team">
+                    <p>
+                        Me, Lasantha Ekanayake, Yasiru Kassapa, Buddhika Jayawardhane & Mohommad Mursith                    
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid footer">
+            <a href="http://facebook.com/chathura.widanage" target="_blank">
+                <img src="img/social/appbar.social.facebook.png" alt="facebook" height="50">
+            </a>
+            <a href="https://lk.linkedin.com/pub/chathura-widanage/47/994/363" target="_blank">
+                <img src="img/social/appbar.social.linkedin.png" alt="linkedin" height="50">
+            </a>
+            <a href="https://github.com/chathurawidanage" target="_blank">
+                <img src="img/social/appbar.social.github.octocat.png" alt="github" height="50">
+            </a>
+        </div>
+
+        <div class="top_btn">
+            ^
+        </div>
+
+        <script type="text/javascript">
+            $(window).scroll(function () {
+                var scrollTop = $(window).scrollTop();
+                var divPosition = $('#menu_bar_position').offset().top;
+                console.log(divPosition);
+                dist = scrollTop - divPosition;
+                width = $('#menu_bar').width();
+                if (dist >= 0) {
+                    //$('body').addClass('body-pad');
+                    $('#menu_bar').addClass('stick-top');
+                    $('#menu_bar_position').height('80px');
+                    $('#menu_bar').width(width);
+                } else {
+                    console.log('remove');
+                    $('#menu_bar').removeClass('stick-top');
+                    //$('body').removeClass('body-pad');
+                    $('#menu_bar_position').height('0px');
+                }
+            });
+
+            $('.top_btn').click(function () {
+                $('html, body').animate({
+                    scrollTop: 0//$($.attr(this, 'href')).offset().top
+                }, 500);
+                return false;
+            });
+        </script>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-26338425-11', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+        <script type="text/javascript" src="js/timeline.js"></script>
+    </body>
+</html>
