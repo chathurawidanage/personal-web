@@ -6,20 +6,27 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
+
 <url>
-  <loc>http://cwidanage.com/</loc>
-  <lastmod>2015-07-14T06:14:54+00:00</lastmod>
+  <loc>https://cwidanage.com/</loc>
+  <lastmod>2018-03-02T10:26:09+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://cwidanage.com/cwidanage.pdf</loc>
-  <lastmod>2015-07-10T11:17:33+00:00</lastmod>
+  <loc>https://cwidanage.com/cwidanage.pdf</loc>
+  <lastmod>2018-03-02T10:26:09+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://cwidanage.com/car.html</loc>
-  <lastmod>2015-07-10T16:49:39+00:00</lastmod>
+  <loc>https://cwidanage.com/car.html</loc>
+  <lastmod>2018-03-02T10:26:09+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://cwidanage.com/index.html</loc>
-  <lastmod>2015-07-14T06:14:54+00:00</lastmod>
+  <loc>https://cwidanage.com/index.html</loc>
+  <lastmod>2018-03-02T10:26:09+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
+
+
 </urlset>
